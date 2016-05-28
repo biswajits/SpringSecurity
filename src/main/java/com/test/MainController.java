@@ -21,6 +21,13 @@ public class MainController {
 
 		
 		System.out.println(hasRole("ROLE_ADMIN"));
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		for (GrantedAuthority authority : auth.getAuthorities()) {
+		     String role = authority.getAuthority();
+		     System.out.println("User Role :"+role);
+		}
 	
 	  ModelAndView model = new ModelAndView();
 	  model.addObject("title", "Spring Security Login Form - Database Authentication");
